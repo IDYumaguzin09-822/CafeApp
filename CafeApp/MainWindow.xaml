@@ -1,0 +1,83 @@
+﻿<Window x:Class="CafeApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CafeApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="510" Width="800">
+    <Window.Resources>
+        <DataTemplate x:Key="listTemplate">
+            <StackPanel Height="250" Width="200" Background="AntiqueWhite" HorizontalAlignment="Center">
+                <Image Width="200" Height="150" Source="{Binding Path=image}" HorizontalAlignment="Center" />
+                <TextBlock FontSize="16" Text="{Binding Path=name}" HorizontalAlignment="Center" />
+                <TextBlock TextWrapping="Wrap" Height="40" FontSize="12" Text="{Binding Path=ingredients}" HorizontalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="10,0,10,0"/>
+                <StackPanel Width="180" Orientation="Horizontal">
+                    <TextBlock FontSize="16" Text="{Binding Path=price}" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                    <Button Template="{DynamicResource ButtonTemplateBuy}" Click="buyButton_Click" x:Name="buyButton" Content="Купить" FontSize="16" Width="70" Height="30"  Margin="70,0,0,0"/>
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+        <ItemsPanelTemplate x:Key="listPanelTemplate">
+            <UniformGrid Columns="3" HorizontalAlignment="Center"/>
+        </ItemsPanelTemplate>
+        <DataTemplate x:Key="menuListTemplate">
+            <Button Template="{DynamicResource ButtonTemplate}" Width="160" Content="{Binding StringFormat=menuListarray}" Height="30" HorizontalContentAlignment="Center" FontSize="14" IsCancel="False" />
+        </DataTemplate>
+        <ItemsPanelTemplate x:Key="menuPanelTemplate">
+            <StackPanel/>
+        </ItemsPanelTemplate>
+        <ControlTemplate x:Key="ButtonTemplate" TargetType="Button">
+            <Border BorderThickness="0" CornerRadius="2">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStopCollection>
+                            <GradientStop Offset="0" Color="Red"></GradientStop>
+                            <GradientStop Offset="1" Color="Gold"></GradientStop>
+                        </GradientStopCollection>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <ContentPresenter RecognizesAccessKey="True"></ContentPresenter>
+            </Border>
+        </ControlTemplate>
+        <ControlTemplate x:Key="ButtonTemplateBuy" TargetType="Button">
+            <Border Background="#feba0e" BorderBrush="#FFFE910E" BorderThickness="1" CornerRadius="2" TextBlock.TextAlignment="Center">
+                <ContentPresenter RecognizesAccessKey="True"></ContentPresenter>
+            </Border>
+        </ControlTemplate>
+    </Window.Resources>
+    <DockPanel>
+        <StackPanel>
+            <Image Height="160" Source="data\mcDonalds.png"/>
+            <ListBox Height="320" x:Name="leftMenuList"
+                     ScrollViewer.VerticalScrollBarVisibility="Hidden" 
+                      ScrollViewer.CanContentScroll="True"
+                     ItemTemplate="{StaticResource menuListTemplate}" 
+                     ItemsPanel="{StaticResource menuPanelTemplate}" 
+                     SelectionChanged="leftMenuList_SelectionChanged"
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                     VerticalContentAlignment="Stretch"/>
+        </StackPanel>
+        <Grid DockPanel.Dock="Bottom" Height="400">
+            <ListBox x:Name="burgersList"
+                     ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                     ScrollViewer.CanContentScroll="True"
+                     ItemTemplate="{StaticResource listTemplate}" 
+                     ItemsPanel="{StaticResource listPanelTemplate}" 
+                     SelectionChanged="burgersList_SelectionChanged"
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                     />
+        </Grid>
+        <StackPanel x:Name="topStackPanel"  DockPanel.Dock="Top" Orientation="Horizontal"  Height="70" HorizontalAlignment="Right">
+            <Button Width="50" Height="70">
+                <Image Height="50"  Source="G:\Photos\wallpaper\Y-iTc5TtDtw.jpg"/>
+            </Button>
+            <Button Width="50" Height="70">
+                <Image Height="50"  Source="G:\Photos\wallpaper\Y-iTc5TtDtw.jpg"/>
+            </Button>
+            <Button Click="Cart_Button_Click">
+                <Image  Source="data/cart.jpg"/>
+            </Button>
+        </StackPanel>
+    </DockPanel>
+</Window>
