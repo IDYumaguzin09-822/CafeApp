@@ -17,15 +17,15 @@ using System.Windows.Shapes;
 
 namespace CafeApp
 {
-    
+
     public partial class MainWindow : Window
     {
         List<Burger> burgers;
         List<Burger> burgersInCart = new List<Burger>();
-        public string[] menuListarray = { "Популярное", "Новинки", "Сеты и боксы",
-                                    "МакКомбо", "Бургеры", "Картофель и стартеры", 
+        public List<string> menuListarray = new List<string> { "Популярное", "Новинки", "Сеты и боксы",
+                                    "МакКомбо", "Бургеры", "Картофель и стартеры",
                                     "Роллы", "Десерты и выпечка", "Напитки и коктейли" };
-        
+
         public MainWindow()
         {
             InitializeComponent();
@@ -40,7 +40,7 @@ namespace CafeApp
         {
             using (StreamReader r = new StreamReader("C:/Users/ADMIN/source/repos/CafeApp/CafeApp/data/MacDonalds_json.json"))
             {
-                string json = r.ReadToEnd();    
+                string json = r.ReadToEnd();
                 burgers = JsonConvert.DeserializeObject<List<Burger>>(json);
 
                 /*dynamic array = JsonConvert.DeserializeObject(json);
@@ -56,7 +56,7 @@ namespace CafeApp
         {
             int index = burgersList.SelectedIndex;
             MessageBox.Show(burgers[index].name);
-            
+
         }
 
         private void leftMenuList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -76,7 +76,7 @@ namespace CafeApp
         private void Cart_Button_Click(object sender, RoutedEventArgs e)
         {
             int count = 0;
-            foreach(Burger i in burgersInCart)
+            foreach (Burger i in burgersInCart)
             {
                 Console.WriteLine($"Element #{count}: {i}");
                 count++;
@@ -89,6 +89,43 @@ namespace CafeApp
             StackPanel stackPanel = (StackPanel)sender;
             Burger burger = (Burger)stackPanel.DataContext;
             //Console.WriteLine(burger.name);
+        }
+
+        private void ButtonFromMenu_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+
+            switch (button.Content)
+            {
+                case "Популярное":
+                    Console.WriteLine(menuListarray[0]);
+                    break;
+                case "Новинки":
+                    Console.WriteLine(menuListarray[1]);
+                    break;
+                case "Сеты и боксы":
+                    Console.WriteLine(menuListarray[2]);
+                    break;
+                case "МакКомбо":
+                    Console.WriteLine(menuListarray[3]);
+                    break;
+                case "Бургеры":
+                    burgersList.ItemsSource = burgers;
+                    break;
+                case "Картофель и стартеры":
+                    Console.WriteLine(menuListarray[5]);
+                    break;
+                case "Роллы":
+                    Console.WriteLine(menuListarray[6]);
+                    break;
+                case "Десерты и выпечка":
+                    Console.WriteLine(menuListarray[7]);
+                    break;
+                case "Напитки и коктейли":
+                    Console.WriteLine(menuListarray[8]);
+                    break;
+
+            }
         }
     }
 }

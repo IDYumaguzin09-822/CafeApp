@@ -26,7 +26,7 @@
             <UniformGrid Columns="3" HorizontalAlignment="Center"/>
         </ItemsPanelTemplate>
         <DataTemplate x:Key="menuListTemplate">
-            <Button Template="{DynamicResource ButtonTemplate}" Width="160" Content="{Binding StringFormat=menuListarray}" Height="30" HorizontalContentAlignment="Center" FontSize="14" IsCancel="False" />
+            <Button Click="ButtonFromMenu_Click" Template="{DynamicResource ButtonTemplate}" Width="160" Content="{Binding StringFormat=menuListarray}" Height="30" HorizontalContentAlignment="Center" FontSize="14" IsCancel="False" />
         </DataTemplate>
         <ItemsPanelTemplate x:Key="menuPanelTemplate">
             <StackPanel/>

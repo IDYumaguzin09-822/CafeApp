@@ -73,6 +73,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Desert.cs" />
+    <Compile Include="Model\NewProduct.cs" />
+    <Compile Include="Model\Popular.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

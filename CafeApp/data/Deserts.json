@@ -1,0 +1,72 @@
+[
+{
+"name":"Макфлурри Де Люкс Клубнично-Шоколадное",
+"price":99,
+"image":"https://mcdonalds.ru/resize/500x500//upload/iblock/5ed/Makflurri-De-Lyuks-shokoladno_klubnichnoe.png",
+"ingredients":"Мороженое из натурального цельного молока, взбитое с клубничным наполнителем и с вафельно-шоколадной крошкой.",
+"food value":"345 ккал, 1444 кДж"
+},
+{
+"name":"Макфлурри Тирамису",
+"price":109,
+"image":"https://mcdonalds.ru/resize/500x500//upload/iblock/bec/0000_Flurry_Tiramisu_1500x1500_min-_1_.png",
+"ingredients":"Мороженое из натурального цельного молока, взбитое с нежным кофейным топпингом со вкусом маскарпоне и кубиками рассыпчатого бисквита «Савоярди»",
+"food value":"343 ккал, 1448 кДж"
+},
+{
+"name":"Макфлурри Де Люкс Карамельно-Шоколадное",
+"price":99,
+"image":"https://mcdonalds.ru/resize/500x500//upload/iblock/728/Makflurri-De-Lyuks-shokoladno_karamelnoe.png",
+"ingredients":"Мороженое из натурального цельного молока, взбитое с добавкой сливочной помадки с вафельно-шоколадной крошкой.",
+"food value":"406 ккал, 1700 кДж"
+},
+{
+"name":"Пирожок лесные ягоды крем-чиз",
+"price":59,
+"image":"https://mcdonalds.ru/resize/500x500//upload/iblock/59e/0000_Pie_berry_cheese_1500x1500_min.png",
+"ingredients":"Два хрустящих пирожка с начинкой из ароматных лесных ягод в сочетании с нежнейшим сливочным сыром.",
+"food value":"285 ккал, 1191 кДж"
+},
+{
+"name":"Пирожок Вишневый",
+"price":50,
+"image":"https://mcdonalds.ru/resize/500x500//upload/iblock/81f/Pirozhok-s-vishney.png",
+"ingredients":"Обжаренный во фритюре пирожок со сладкой начинкой из вишни.",
+"food value":"249 ккал, 1043 кДж"
+},
+{
+"name":"Донат с ванильным кремом",
+"price":89,
+"image":"https://mcdonalds.ru/resize/500x500//upload/iblock/0b8/vanilla_donut_min.png",
+"ingredients":"Аромантый донат с нежной начинкой из ванильного крема, покрытый белой и шоколадной глазурью.",
+"food value":"282 ккал, 1179 кДж"
+},
+{
+"name":"Морковные палочки",
+"price":55,
+"image":"https://mcdonalds.ru/resize/500x500//upload/iblock/fa5/6005_Carrot_pack_1500x1500_min.png",
+"ingredients":"Отборная, нарезанная палочками, свежая морковка.",
+"food value":"28 ккал, 112 кДж"
+},
+{
+"name":"Яблочные дольки",
+"price":55,
+"image":"https://mcdonalds.ru/resize/500x500//upload/iblock/bad/YAblochnye_dolki.png",
+"ingredients":"Отборные, нарезанные дольками, свежие яблоки.",
+"food value":"38 ккал, 160 кДж"
+},
+{
+"name":"Донат с шоколадным кремом",
+"price":89,
+"image":"https://mcdonalds.ru/resize/500x500//upload/iblock/3de/0000_Donat_chocolate_1500x1500_min.png",
+"ingredients":"Нежный донат с шоколадно-кремовой начинкой, покрытый молочной и шоколадной глазурью.",
+"food value":"372 ккал, 1553 кДж"
+},
+{
+"name":"Шоколадный мусс",
+"price":145,
+"image":"https://mcdonalds.ru/resize/500x500//upload/iblock/eaf/Muss-s-belgiyskim-shokoladom.png",
+"ingredients":"Воздушный шоколадный мусс с темным шоколадом, украшенный шоколадной стружкой.",
+"food value":"268 ккал, 1123 кДж"
+}
+]
