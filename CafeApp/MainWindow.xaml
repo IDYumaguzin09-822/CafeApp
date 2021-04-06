@@ -4,21 +4,22 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CafeApp"
+        WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
         Title="MainWindow" Height="510" Width="800">
     <Window.Resources>
         <DataTemplate x:Key="listTemplate">
-            <StackPanel x:Name="stackPanelToItem" MouseEnter="StackPanel_MouseEnter" Height="250" Width="200"
+            <StackPanel x:Name="stackPanelToItem" Height="300" Width="200"
                         Background="AntiqueWhite" HorizontalAlignment="Center">
                 <Image x:Name="burgerImage" Width="200" Height="150" Source="{Binding Path=image}" HorizontalAlignment="Center" />
-                <TextBlock x:Name="burgerName" FontSize="16" Text="{Binding Path=name}" HorizontalAlignment="Center" />
+                <TextBlock x:Name="burgerName" TextWrapping="Wrap" Height="50" TextTrimming="CharacterEllipsis" FontSize="16" Text="{Binding Path=name}" HorizontalAlignment="Center" />
                 <TextBlock x:Name="burgerIngredients" TextWrapping="Wrap" Height="40" FontSize="12" Text="{Binding Path=ingredients}" 
                            HorizontalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="10,0,10,0"/>
-                <StackPanel Width="180" Orientation="Horizontal">
-                    <TextBlock x:Name="burgerPrice" FontSize="16" Text="{Binding Path=price, StringFormat=Price: {0:C}.}" 
+                <StackPanel Width="180" Orientation="Horizontal" VerticalAlignment="Bottom" Margin="0,30,0,0">
+                    <TextBlock x:Name="burgerPrice" FontSize="16" Text="{Binding Path=price}" 
                                HorizontalAlignment="Left" Margin="10,0,0,0"/>
                     <Button Template="{DynamicResource ButtonTemplateBuy}" Click="buyButton_Click" x:Name="buyButton" 
-                            Content="Купить" FontSize="16" Width="70" Height="30"  Margin="10,0,0,0"/>
+                            Content="Купить" FontSize="16" Width="70" Height="30"  Margin="70,0,0,0"/>
                 </StackPanel>
             </StackPanel>
         </DataTemplate>
@@ -57,28 +58,20 @@
                      ScrollViewer.VerticalScrollBarVisibility="Hidden" 
                       ScrollViewer.CanContentScroll="True"
                      ItemTemplate="{StaticResource menuListTemplate}" 
-                     ItemsPanel="{StaticResource menuPanelTemplate}" 
-                     SelectionChanged="leftMenuList_SelectionChanged"
+                     ItemsPanel="{StaticResource menuPanelTemplate}"
                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                      VerticalContentAlignment="Stretch"/>
         </StackPanel>
         <Grid DockPanel.Dock="Bottom" Height="400">
-            <ListBox x:Name="burgersList"
+            <ListBox x:Name="mainWindowListForProducts"
                      ScrollViewer.VerticalScrollBarVisibility="Hidden"
                      ScrollViewer.CanContentScroll="True"
                      ItemTemplate="{StaticResource listTemplate}" 
                      ItemsPanel="{StaticResource listPanelTemplate}" 
                      SelectionChanged="burgersList_SelectionChanged"
-                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                     />
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
         </Grid>
         <StackPanel x:Name="topStackPanel"  DockPanel.Dock="Top" Orientation="Horizontal"  Height="70" HorizontalAlignment="Right">
-            <Button Width="50" Height="70">
-                <Image Height="50"  Source="G:\Photos\wallpaper\Y-iTc5TtDtw.jpg"/>
-            </Button>
-            <Button Width="50" Height="70">
-                <Image Height="50"  Source="G:\Photos\wallpaper\Y-iTc5TtDtw.jpg"/>
-            </Button>
             <Button Click="Cart_Button_Click">
                 <Image  Source="data/cart.jpg"/>
             </Button>

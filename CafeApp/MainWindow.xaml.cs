@@ -20,8 +20,8 @@ namespace CafeApp
 
     public partial class MainWindow : Window
     {
-        List<Burger> burgers;
-        List<Burger> burgersInCart = new List<Burger>();
+        List<Product> products;
+        public static List<Product> productInCart = new List<Product>();
         public List<string> menuListarray = new List<string> { "Популярное", "Новинки", "Сеты и боксы",
                                     "МакКомбо", "Бургеры", "Картофель и стартеры",
                                     "Роллы", "Десерты и выпечка", "Напитки и коктейли" };
@@ -29,19 +29,19 @@ namespace CafeApp
         public MainWindow()
         {
             InitializeComponent();
-            LoadJson();
+            LoadJson("C:/Users/ADMIN/source/repos/CafeApp/CafeApp/data/Populars.json");
 
-            burgersList.ItemsSource = burgers;
+            mainWindowListForProducts.ItemsSource = products;
             leftMenuList.ItemsSource = menuListarray;
 
         }
 
-        public void LoadJson()
+        public void LoadJson(string Path)
         {
-            using (StreamReader r = new StreamReader("C:/Users/ADMIN/source/repos/CafeApp/CafeApp/data/MacDonalds_json.json"))
+            using (StreamReader r = new StreamReader(Path))
             {
                 string json = r.ReadToEnd();
-                burgers = JsonConvert.DeserializeObject<List<Burger>>(json);
+                products = JsonConvert.DeserializeObject<List<Product>>(json);
 
                 /*dynamic array = JsonConvert.DeserializeObject(json);
                 foreach (var item in array)
@@ -54,13 +54,8 @@ namespace CafeApp
 
         private void burgersList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int index = burgersList.SelectedIndex;
-            MessageBox.Show(burgers[index].name);
-
-        }
-
-        private void leftMenuList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+            int index = mainWindowListForProducts.SelectedIndex;
+            MessageBox.Show(products[index].name +"\n\n" + products[index].ingredients);
 
         }
 
@@ -68,27 +63,22 @@ namespace CafeApp
         {
             Button button = (Button)sender;
 
-            Burger burger = (Burger)button.DataContext;
-            burgersInCart.Add(burger);
-            Console.WriteLine(burger.price);
+            Product product = (Product)button.DataContext;
+            productInCart.Add(product);
         }
 
         private void Cart_Button_Click(object sender, RoutedEventArgs e)
         {
-            int count = 0;
-            foreach (Burger i in burgersInCart)
+            if (productInCart.Count != 0)
             {
-                Console.WriteLine($"Element #{count}: {i}");
-                count++;
+                CartWindow cartWindow = new CartWindow();
+                cartWindow.Show();
+                cartWindow.cartWindowListForProducts.ItemsSource = productInCart;
             }
-            Console.WriteLine($"Number of elements: {count}");
-        }
-
-        private void StackPanel_MouseEnter(object sender, MouseEventArgs e)
-        {
-            StackPanel stackPanel = (StackPanel)sender;
-            Burger burger = (Burger)stackPanel.DataContext;
-            //Console.WriteLine(burger.name);
+            else
+            {
+                MessageBox.Show("Ваша корзина пуста!");
+            }
         }
 
         private void ButtonFromMenu_Click(object sender, RoutedEventArgs e)
@@ -98,31 +88,35 @@ namespace CafeApp
             switch (button.Content)
             {
                 case "Популярное":
-                    Console.WriteLine(menuListarray[0]);
+                    LoadJson("C:/Users/ADMIN/source/repos/CafeApp/CafeApp/data/Populars.json");
+                    mainWindowListForProducts.ItemsSource = products;
                     break;
                 case "Новинки":
-                    Console.WriteLine(menuListarray[1]);
+                    LoadJson("C:/Users/ADMIN/source/repos/CafeApp/CafeApp/data/News1.json");
+                    mainWindowListForProducts.ItemsSource = products;
                     break;
                 case "Сеты и боксы":
-                    Console.WriteLine(menuListarray[2]);
+                    MessageBox.Show("Эта вкладка находится на стадии разработки. Спасибо, что пользуетесь нашим приложением.");
                     break;
                 case "МакКомбо":
-                    Console.WriteLine(menuListarray[3]);
+                    MessageBox.Show("Эта вкладка находится на стадии разработки. Спасибо, что пользуетесь нашим приложением.");
                     break;
                 case "Бургеры":
-                    burgersList.ItemsSource = burgers;
+                    LoadJson("C:/Users/ADMIN/source/repos/CafeApp/CafeApp/data/MacDonalds_json.json");
+                    mainWindowListForProducts.ItemsSource = products;
                     break;
                 case "Картофель и стартеры":
-                    Console.WriteLine(menuListarray[5]);
+                    MessageBox.Show("Эта вкладка находится на стадии разработки. Спасибо, что пользуетесь нашим приложением.");
                     break;
                 case "Роллы":
-                    Console.WriteLine(menuListarray[6]);
+                    MessageBox.Show("Эта вкладка находится на стадии разработки. Спасибо, что пользуетесь нашим приложением.");
                     break;
                 case "Десерты и выпечка":
-                    Console.WriteLine(menuListarray[7]);
+                    LoadJson("C:/Users/ADMIN/source/repos/CafeApp/CafeApp/data/Deserts.json");
+                    mainWindowListForProducts.ItemsSource = products;
                     break;
                 case "Напитки и коктейли":
-                    Console.WriteLine(menuListarray[8]);
+                    MessageBox.Show("Эта вкладка находится на стадии разработки. Спасибо, что пользуетесь нашим приложением.");
                     break;
 
             }
