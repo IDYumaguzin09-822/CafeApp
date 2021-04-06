@@ -8,13 +8,17 @@
         Title="MainWindow" Height="510" Width="800">
     <Window.Resources>
         <DataTemplate x:Key="listTemplate">
-            <StackPanel Height="250" Width="200" Background="AntiqueWhite" HorizontalAlignment="Center">
-                <Image Width="200" Height="150" Source="{Binding Path=image}" HorizontalAlignment="Center" />
-                <TextBlock FontSize="16" Text="{Binding Path=name}" HorizontalAlignment="Center" />
-                <TextBlock TextWrapping="Wrap" Height="40" FontSize="12" Text="{Binding Path=ingredients}" HorizontalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="10,0,10,0"/>
+            <StackPanel x:Name="stackPanelToItem" MouseEnter="StackPanel_MouseEnter" Height="250" Width="200"
+                        Background="AntiqueWhite" HorizontalAlignment="Center">
+                <Image x:Name="burgerImage" Width="200" Height="150" Source="{Binding Path=image}" HorizontalAlignment="Center" />
+                <TextBlock x:Name="burgerName" FontSize="16" Text="{Binding Path=name}" HorizontalAlignment="Center" />
+                <TextBlock x:Name="burgerIngredients" TextWrapping="Wrap" Height="40" FontSize="12" Text="{Binding Path=ingredients}" 
+                           HorizontalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="10,0,10,0"/>
                 <StackPanel Width="180" Orientation="Horizontal">
-                    <TextBlock FontSize="16" Text="{Binding Path=price}" HorizontalAlignment="Left" Margin="10,0,0,0"/>
-                    <Button Template="{DynamicResource ButtonTemplateBuy}" Click="buyButton_Click" x:Name="buyButton" Content="Купить" FontSize="16" Width="70" Height="30"  Margin="70,0,0,0"/>
+                    <TextBlock x:Name="burgerPrice" FontSize="16" Text="{Binding Path=price, StringFormat=Price: {0:C}.}" 
+                               HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                    <Button Template="{DynamicResource ButtonTemplateBuy}" Click="buyButton_Click" x:Name="buyButton" 
+                            Content="Купить" FontSize="16" Width="70" Height="30"  Margin="10,0,0,0"/>
                 </StackPanel>
             </StackPanel>
         </DataTemplate>

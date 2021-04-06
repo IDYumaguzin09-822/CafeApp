@@ -31,15 +31,9 @@ namespace CafeApp
             InitializeComponent();
             LoadJson();
 
-            this.Loaded += new RoutedEventHandler(buyButton_Click);
-
             burgersList.ItemsSource = burgers;
             leftMenuList.ItemsSource = menuListarray;
 
-        }
-        void MainView_Loaded(object sender, RoutedEventArgs e)
-        {
-            Window parentWindow = Window.GetWindow(this);
         }
 
         public void LoadJson()
@@ -60,6 +54,8 @@ namespace CafeApp
 
         private void burgersList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            int index = burgersList.SelectedIndex;
+            MessageBox.Show(burgers[index].name);
             
         }
 
@@ -70,17 +66,29 @@ namespace CafeApp
 
         private void buyButton_Click(object sender, RoutedEventArgs e)
         {
-            Window parentWindow = Window.GetWindow(this);
+            Button button = (Button)sender;
 
-            Burger burger = (Burger)burgersList.SelectedItem;
-            MessageBox.Show(parentWindow.ToString());
+            Burger burger = (Burger)button.DataContext;
             burgersInCart.Add(burger);
-            //Console.WriteLine(burgersInCart.Last().name);
+            Console.WriteLine(burger.price);
         }
 
         private void Cart_Button_Click(object sender, RoutedEventArgs e)
         {
+            int count = 0;
+            foreach(Burger i in burgersInCart)
+            {
+                Console.WriteLine($"Element #{count}: {i}");
+                count++;
+            }
+            Console.WriteLine($"Number of elements: {count}");
+        }
 
+        private void StackPanel_MouseEnter(object sender, MouseEventArgs e)
+        {
+            StackPanel stackPanel = (StackPanel)sender;
+            Burger burger = (Burger)stackPanel.DataContext;
+            //Console.WriteLine(burger.name);
         }
     }
 }
